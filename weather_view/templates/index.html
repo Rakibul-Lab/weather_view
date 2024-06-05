@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        background-size: cover;
+        background-color: beige;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        flex-direction: column;
+        color: #fff;
+      }
+      .container {
+        max-width: 500px;
+        padding: 30px;
+        border-radius: 10px;
+        background-color: purple;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        text-align: center;
+      }
+      h1 {
+        font-size: 36px;
+        margin-bottom: 20px;
+      }
+      form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+      label {
+        font-size: 18px;
+        margin-right: 10px;
+      }
+      input[type="text"] {
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 5px;
+        border: none;
+        flex: 1;
+        max-width: 70%;
+      }
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      button:hover {
+        background-color: #45a049;
+      }
+      .weather-info {
+        margin-top: 30px;
+      }
+      .weather-icon {
+        font-size: 48px;
+        margin-bottom: 10px;
+      }
+      .weather-description {
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+      .weather-details {
+        font-size: 24px;
+        margin-bottom: 5px;
+      }
+      @media screen and (max-width: 600px) {
+        .container {
+          padding: 20px;
+        }
+        h1 {
+          font-size: 28px;
+        }
+        .weather-icon {
+          font-size: 36px;
+        }
+        .weather-description {
+          font-size: 18px;
+        }
+        .weather-details {
+          font-size: 14px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Weather viewer</h1>
+      <form method="post">
+        <label for="city">Enter city name:</label>
+        <input
+          type="text"
+          id="city"
+          name="city"
+          placeholder="E.g., Dhaka"
+          required
+        />
+        <button type="submit"><i class="fas fa-search"></i> Search</button>
+      </form>
+      {% if error_message %}
+      <p>{{ error_message }}</p>
+      {% endif %} {% if city %}
+      <div class="weather-info">
+        <i class="weather-icon fas fa-cloud-sun"></i>
+        <p>Weather information for {{ city }}</p>
+        <p class="weather-description">{{ description }}</p>
+        <p class="weather-details">Temperature: {{ temperature }}°C</p>
+        <p class="weather-details">Humidity: {{ humidity }}%</p>
+        <p class="weather-details">Wind Speed: {{ wind_speed }} m/s</p>
+      </div>
+      {% endif %}
+    </div>
+  </body>
+</html>
